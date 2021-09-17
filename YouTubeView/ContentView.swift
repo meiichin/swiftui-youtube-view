@@ -16,23 +16,23 @@ struct ContentView: View {
                         Image(systemName: "house.fill")
                         Text("Beranda")
                     }
-                Home()
+                UnderConstruction()
                     .tabItem {
                         Image(systemName: "paperplane.fill")
                         Text("Exploration")
                     }
-                Home()
+                UnderConstruction()
                     .tabItem {
                         Image(systemName: "tray.fill")
                         Text("Subscription")
                     }
-                Home()
+                UnderConstruction()
                     .tabItem {
                         Image(systemName: "envelope.fill")
                         Text("Inbox")
                     }
                 
-                Home()
+                UnderConstruction()
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
                         Text("Collection")
@@ -96,100 +96,58 @@ struct Home: View {
 struct Content: View {
     var body: some View{
         List{
-            // Content 1
-            VStack{
-                ZStack(alignment:.bottomTrailing){
-                    Image("c1")
-                        .resizable()
-                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    
-                    Text("10:00")
-                        .padding(.all,5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing,5)
-                        .padding(.bottom, 5)
-                }
-                HStack(spacing:20){
-                    Image("me")
-                        .resizable()
-                        .frame(width:30, height: 30)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    VStack(alignment:.leading){
-                        Text("Tutorial SwiftUI #1").font(.headline)
-                        Text("Ini adalah deskripsi video - 300x ditonton - 10 jam yang lalu").font(.caption)
-                    }
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                }
-                
-            }
-            
-            // Content 2
-            VStack{
-                ZStack(alignment:.bottomTrailing){
-                    Image("c2")
-                        .resizable()
-                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    
-                    Text("10:00")
-                        .padding(.all,5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing,5)
-                        .padding(.bottom, 5)
-                }
-                HStack(spacing:20){
-                    Image("me")
-                        .resizable()
-                        .frame(width:30, height: 30)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    VStack(alignment:.leading){
-                        Text("Tutorial SwiftUI #1").font(.headline)
-                        Text("Ini adalah deskripsi video - 300x ditonton - 10 jam yang lalu").font(.caption)
-                    }
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                }
-                
-            }
-            
-            // Content 3
-            VStack{
-                ZStack(alignment:.bottomTrailing){
-                    Image("c1")
-                        .resizable()
-                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    
-                    Text("10:00")
-                        .padding(.all,5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing,5)
-                        .padding(.bottom, 5)
-                }
-                HStack(spacing:20){
-                    Image("me")
-                        .resizable()
-                        .frame(width:30, height: 30)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    VStack(alignment:.leading){
-                        Text("Tutorial SwiftUI #1").font(.headline)
-                        Text("Ini adalah deskripsi video - 300x ditonton - 10 jam yang lalu").font(.caption)
-                    }
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                }
-                
-            }
-            
-            
+            ComponentContent(imageContent: "c1", profileContent: "me", title: "Tutorial SwiftUI #1", description: "Turotial youtube - 1000 view", duration: "20:00")
+            ComponentContent(imageContent: "c2", profileContent: "me", title: "Tutorial SwiftUI #2", description: "Turotial youtube - 1000 view", duration: "10:00")
+            ComponentContent(imageContent: "c1", profileContent: "me", title: "Tutorial SwiftUI #3", description: "Turotial youtube - 1000 view", duration: "05:00")
+            ComponentContent(imageContent: "c2", profileContent: "me", title: "Tutorial SwiftUI #2", description: "Turotial youtube - 1000 view", duration: "10:00")
         }
+    }
+}
+
+// Component for content
+struct ComponentContent: View {
+    
+    var imageContent: String
+    var profileContent: String
+    var title: String
+    var description: String
+    var duration: String
+    
+    var body: some View{
+        // Content
+        VStack{
+            ZStack(alignment:.bottomTrailing){
+                Image(imageContent)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                
+                Text(duration)
+                    .padding(.all,5)
+                    .foregroundColor(Color.white)
+                    .font(.caption)
+                    .background(Color.black)
+                    .cornerRadius(5)
+                    .padding(.trailing,5)
+                    .padding(.bottom, 5)
+            }
+            HStack(spacing:20){
+                Image(profileContent)
+                    .resizable()
+                    .frame(width:30, height: 30)
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                VStack(alignment:.leading){
+                    Text(title).font(.headline)
+                    Text(description).font(.caption)
+                }
+                Spacer()
+                Image(systemName: "list.bullet")
+            }
+        }
+    }
+}
+
+struct UnderConstruction: View {
+    var body: some View{
+        Text("Under Construction")
     }
 }
