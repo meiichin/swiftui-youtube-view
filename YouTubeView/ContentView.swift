@@ -9,7 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Home()
+        ZStack{
+            TabView{
+                Home()
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Beranda")
+                    }
+                Home()
+                    .tabItem {
+                        Image(systemName: "paperplane.fill")
+                        Text("Exploration")
+                    }
+                Home()
+                    .tabItem {
+                        Image(systemName: "tray.fill")
+                        Text("Subscription")
+                    }
+                Home()
+                    .tabItem {
+                        Image(systemName: "envelope.fill")
+                        Text("Inbox")
+                    }
+                
+                Home()
+                    .tabItem {
+                        Image(systemName: "play.rectangle.fill")
+                        Text("Collection")
+                    }
+            }
+            .accentColor(Color.red)
+        }
     }
 }
 
